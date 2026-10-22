@@ -1,0 +1,6 @@
+site/
+__pycache__/
+data/afdc_dcfast_raw.json
+data/snapshots/*
+!data/snapshots/latest.json
+data/run.log

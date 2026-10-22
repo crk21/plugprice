@@ -1,0 +1,64 @@
+total_results 16505 records 16505
+countries Counter({'US': 16505})
+stations 16505 dc ports 81430
+status Counter({'E': 15843, 'T': 562, 'P': 100})
+dc ports by status {'E': 79130, 'T': 1358, 'P': 942}
+fill all 1457/16505 = 8.8%
+fill E only 1407/15843 = 8.9%
+
+network top15: stations, fill%, numeric% of all
+ChargePoint Network              4598   0.0%   0.0%
+Tesla                            3294   9.4%   9.4%
+eVgo Network                     1215   0.0%   0.0%
+Electrify America                1194   0.0%   0.0%
+EV Connect                        813   0.9%   0.9%
+Blink Network                     702   4.0%   0.0%
+RED_E                             609   0.0%   0.0%
+Non-Networked                     545  68.1%  18.7%
+FORD_CHARGE                       354   0.0%   0.0%
+EVCS                              223   0.0%   0.0%
+IONNA                             202   0.0%   0.0%
+FCN                               172   0.0%   0.0%
+RIVIAN_ADVENTURE                  162   0.0%   0.0%
+VIALYNK                           142   0.0%   0.0%
+EVGATEWAY                         119   0.0%   0.0%
+
+filled 1457 numeric 965 (66.2%) vague 492
+top vague [('Free', 409), ('Please download 7Charge app for current pricing.', 43), ('Dynamic EV pricing rates', 31), ('FREE', 2), ('Free; pay lot', 1), ('Free for Level 2 charging; fee for DC fast charging', 1), ('Free; parking fee', 1), ('L2: Free', 1)]
+samples:
+ - '$0.39 per minute'
+ - '$0.70 per kWh for DC charging, $0.66 per kWh for L2 charging'
+ - 'Free Level 2 charging; DCFC 2.50 per session and $0.20 per minute'
+ - '$0.30 per kWh'
+ - '$0.46 Peak / $0.25 Off-Peak per kWh'
+ - '$0.38 per kWh; $6.99 per session'
+ - '$0.61 Peak / $0.41 Off-Peak per kWh'
+ - 'For DCFC: $0.49; For L2: $0.39 per kWh'
+ - '$0.55/kWh'
+ - 'Free; pay lot'
+ - 'Free; parking fee'
+ - 'FREE'
+ - 'Dynamic EV pricing rate'
+ - 'L2: Free'
+ - 'Donations accepted'
+
+states
+CA 2938 9.7% fill 6.8% numeric
+FL 957 20.7% fill 16.0% numeric
+TX 950 9.9% fill 8.0% numeric
+NY 821 7.2% fill 5.5% numeric
+IL 653 6.9% fill 4.7% numeric
+MI 596 4.9% fill 3.2% numeric
+GA 568 7.9% fill 4.4% numeric
+WA 557 5.4% fill 3.8% numeric
+MA 546 3.3% fill 2.9% numeric
+CO 513 6.8% fill 3.3% numeric
+
+freshness (E stations)
+date_last_confirmed present 15803 / 15843 min ['2022-05-05'] median ['2026-10-21'] max ['2026-10-22']
+updated_at present 15843 / 15843 min ['2024-01-31'] median ['2026-10-21'] max ['2026-10-22']
+open_date present 15843 / 15843 min ['1999-10-15'] median ['2024-03-19'] max ['2026-10-23']
+expected_date present 0 / 15843 min [] median [] max []
+confirmed by month top [('2026-10', 11382), ('2026-06', 2958), ('2026-01', 277), ('2026-09', 172), ('2026-07', 161), ('2024-02', 99), ('2026-03', 88), ('2026-02', 77)]
+confirmed <=30d 11382 <=90d 11593 >365d 499 missing 40
+T stations with status reason fields sample keys: ['date_last_confirmed', 'expected_date', 'open_date', 'status_code', 'updated_at', 'geocode_status', 'hy_status_link']
