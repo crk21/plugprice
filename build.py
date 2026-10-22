@@ -4,7 +4,7 @@ import json, os, re, glob, shutil, html
 from collections import Counter, defaultdict
 ROOT = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(ROOT, "site")
 BASE_URL = os.environ.get("BASE_URL", "https://crk21.github.io/plugprice").rstrip("/")
-REPORT_EMAIL = "prices@plugprice.example"  # TODO: real address
+REPORT_EMAIL = "chetan+prices@mail.grokbot.com"
 STATES = {"AL":"Alabama","AK":"Alaska","AZ":"Arizona","AR":"Arkansas","CA":"California","CO":"Colorado","CT":"Connecticut","DE":"Delaware","DC":"District of Columbia","FL":"Florida","GA":"Georgia","HI":"Hawaii","ID":"Idaho","IL":"Illinois","IN":"Indiana","IA":"Iowa","KS":"Kansas","KY":"Kentucky","LA":"Louisiana","ME":"Maine","MD":"Maryland","MA":"Massachusetts","MI":"Michigan","MN":"Minnesota","MS":"Mississippi","MO":"Missouri","MT":"Montana","NE":"Nebraska","NV":"Nevada","NH":"New Hampshire","NJ":"New Jersey","NM":"New Mexico","NY":"New York","NC":"North Carolina","ND":"North Dakota","OH":"Ohio","OK":"Oklahoma","OR":"Oregon","PA":"Pennsylvania","PR":"Puerto Rico","RI":"Rhode Island","SC":"South Carolina","SD":"South Dakota","TN":"Tennessee","TX":"Texas","UT":"Utah","VT":"Vermont","VA":"Virginia","WA":"Washington","WV":"West Virginia","WI":"Wisconsin","WY":"Wyoming"}
 STATUS = {"E":"Available","T":"Temporarily unavailable","P":"Planned"}
 e = lambda x: html.escape(str(x if x is not None else ""))
@@ -20,13 +20,24 @@ def price_per_kwh(s):
     v = float(m.group(1)); v = v/100 if "$" not in m.group(0) else v
     return round(v, 2) if 0.05 <= v <= 1.5 else None
 
+BH_FORM = '<script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="49ea30b7-47c6-4b01-9519-bd2b286493ce"></script>'
+BH_ATTR = '<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>'
+PITCH = "Weekly: cheapest fast charging + which networks are broken. Free."
+SUB_URL = "https://plugprice.beehiiv.com/subscribe"
+def news(compact=False):
+    if compact: return f'<aside class="news compact"><p><b>{PITCH}</b> <a href="{SUB_URL}">Subscribe</a></p>{BH_FORM}</aside>'
+    return f'<section class="news"><h2>Get the weekly PlugPrice email</h2><p>{PITCH}</p>{BH_FORM}<p><small>Form not loading? <a href="{SUB_URL}">Subscribe here</a>.</small></p></section>'
+
 def page(path, title, body, desc="", depth=None):
+    if path == "index.html" or path.startswith(("leaderboard/", "prices/", "state/")): body += news()
+    elif path.startswith("station/"): body += news(True)
+    attr = BH_ATTR if "beehiiv" in body else ""
     d = path.count("/"); pre = "../" * d
     nav = f'<nav><a class="logo" href="{pre}index.html">⚡ PlugPrice</a><a href="{pre}leaderboard/index.html">Reliability</a><a href="{pre}prices/index.html">Prices</a><a href="{pre}about/index.html">About</a></nav>'
     doc = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc or title)}"><link rel="canonical" href="{BASE_URL}/{path[:-10] if path.endswith('index.html') else path}"><link rel="stylesheet" href="{pre}style.css"></head>
 <body><header>{nav}</header><main>{body}</main><footer>Data: <a href="https://afdc.energy.gov/stations">U.S. DOE Alternative Fuels Data Center</a>, snapshot {SNAPDATE}. PlugPrice is independent and not affiliated with DOE or any network. <a href="{pre}about/index.html">Caveats</a></footer>
-<script>window.ROOT="{pre}"</script>{'<script src="'+pre+'app.js"></script>' if 'data-app' in body else ''}</body></html>"""
+<script>window.ROOT="{pre}"</script>{'<script src="'+pre+'app.js"></script>' if 'data-app' in body else ''}{attr}</body></html>"""
     f = os.path.join(OUT, path); os.makedirs(os.path.dirname(f), exist_ok=True)
     open(f, "w").write(doc); PAGES.append(path)
 
@@ -122,7 +133,7 @@ def main():
 <h2>Least reliable networks today</h2><ol>{top}</ol><p><a href="leaderboard/index.html">Full reliability leaderboard →</a></p>
 <h2>Recent status changes</h2><ul>{recent}</ul>
 <h2>Browse by state</h2><p class="chips">{"".join(f'<a href="state/{k.lower()}/index.html">{e(n)} <b>{c}</b></a>' for k, n, c in statelinks)}</p>
-<section class="news"><h2>Get the weekly “which chargers are down” email</h2><!-- TODO: newsletter backend not connected (e.g. Buttondown/Listmonk). Form does nothing yet. --><form onsubmit="alert('Newsletter coming soon — not connected yet.');return false"><input type="email" placeholder="you@example.com" required><button>Notify me</button></form><small>TODO: signup not live yet; no data is sent anywhere.</small></section>""")
+""")
     page("about/index.html", "About PlugPrice & data caveats", f"""<h1>About PlugPrice</h1>
 <p>PlugPrice tracks every public DC fast charging station in the US to show which ones are reported down and what they cost.</p>
 <h2>Data source</h2><p>Station data comes from the <a href="https://afdc.energy.gov/stations">U.S. Department of Energy Alternative Fuels Data Center (AFDC)</a> Station Locator API (developer.nlr.gov, alt-fuel-stations v1), refreshed daily. Current snapshot: {SNAPDATE}. AFDC data is public; PlugPrice is not affiliated with or endorsed by DOE, NREL/NLR, or any charging network.</p>
@@ -131,7 +142,7 @@ def main():
 <li><b>Reliability history starts {SNAPDATE}.</b> We compare daily snapshots to record when stations go down or come back. Trends need weeks of data.</li>
 <li><b>Prices are sparse.</b> Only {pct(len(pr), len(S))} of stations list a single clear $/kWh price. Big networks (ChargePoint, EVgo, Electrify America…) publish none in AFDC. We skip time-of-use, tiered, per-minute and vague entries rather than guess. Listed prices may be outdated and may exclude session or idle fees.</li>
 <li>Reliability leaderboard only ranks networks with at least 50 stations.</li></ul>
-<h2>Contact</h2><p>Spot a wrong price or status? <a href="mailto:{REPORT_EMAIL}">Email us</a> (TODO: real address).</p>""")
+<h2>Contact</h2><p>Spot a wrong price or status? <a href="mailto:{REPORT_EMAIL}">Email us</a>.</p>""")
     # sitemap(s) + robots
     urls = [BASE_URL + "/" + (p[:-10] if p.endswith("index.html") else p) for p in PAGES]
     chunks = [urls[i:i+45000] for i in range(0, len(urls), 45000)]
