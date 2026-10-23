@@ -24,6 +24,7 @@ BH_FORM = '<script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" 
 BH_ATTR = '<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>'
 PITCH = "Weekly: cheapest fast charging + which networks are broken. Free."
 SUB_URL = "https://plugprice.beehiiv.com/subscribe"
+def disc_note(pre=""): return f'<p class="note disc"><small>PlugPrice may earn a commission from some links on this page, at no extra cost to you. Data and rankings are never paid for. <a href="{pre}disclosure/index.html">Disclosure</a>.</small></p>'
 def news(compact=False):
     if compact: return f'<aside class="news compact"><p><b>{PITCH}</b> <a href="{SUB_URL}">Subscribe</a></p>{BH_FORM}</aside>'
     return f'<section class="news"><h2>Get the weekly PlugPrice email</h2><p>{PITCH}</p>{BH_FORM}<p><small>Form not loading? <a href="{SUB_URL}">Subscribe here</a>.</small></p></section>'
@@ -36,7 +37,7 @@ def page(path, title, body, desc="", depth=None):
     nav = f'<nav><a class="logo" href="{pre}index.html">⚡ PlugPrice</a><a href="{pre}leaderboard/index.html">Reliability</a><a href="{pre}prices/index.html">Prices</a><a href="{pre}about/index.html">About</a></nav>'
     doc = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc or title)}"><link rel="canonical" href="{BASE_URL}/{path[:-10] if path.endswith('index.html') else path}"><link rel="stylesheet" href="{pre}style.css"></head>
-<body><header>{nav}</header><main>{body}</main><footer>Data: <a href="https://afdc.energy.gov/stations">U.S. DOE Alternative Fuels Data Center</a>, snapshot {SNAPDATE}. PlugPrice is independent and not affiliated with DOE or any network. <a href="{pre}about/index.html">Caveats</a></footer>
+<body><header>{nav}</header><main>{body}</main><footer>Data: <a href="https://afdc.energy.gov/stations">U.S. DOE Alternative Fuels Data Center</a>, snapshot {SNAPDATE}. PlugPrice is independent and not affiliated with DOE or any network. <a href="{pre}about/index.html">Caveats</a> · <a href="{pre}privacy/index.html">Privacy</a> · <a href="{pre}disclosure/index.html">Affiliate disclosure</a></footer>
 <script>window.ROOT="{pre}"</script>{'<script src="'+pre+'app.js"></script>' if 'data-app' in body else ''}{attr}</body></html>"""
     f = os.path.join(OUT, path); os.makedirs(os.path.dirname(f), exist_ok=True)
     open(f, "w").write(doc); PAGES.append(path)
@@ -133,6 +134,7 @@ def main():
 <h2>Least reliable networks today</h2><ol>{top}</ol><p><a href="leaderboard/index.html">Full reliability leaderboard →</a></p>
 <h2>Recent status changes</h2><ul>{recent}</ul>
 <h2>Browse by state</h2><p class="chips">{"".join(f'<a href="state/{k.lower()}/index.html">{e(n)} <b>{c}</b></a>' for k, n, c in statelinks)}</p>
+<!-- home charger affiliate links go here -->{disc_note()}
 """)
     page("about/index.html", "About PlugPrice & data caveats", f"""<h1>About PlugPrice</h1>
 <p>PlugPrice tracks every public DC fast charging station in the US to show which ones are reported down and what they cost.</p>
@@ -143,6 +145,17 @@ def main():
 <li><b>Prices are sparse.</b> Only {pct(len(pr), len(S))} of stations list a single clear $/kWh price. Big networks (ChargePoint, EVgo, Electrify America…) publish none in AFDC. We skip time-of-use, tiered, per-minute and vague entries rather than guess. Listed prices may be outdated and may exclude session or idle fees.</li>
 <li>Reliability leaderboard only ranks networks with at least 50 stations.</li></ul>
 <h2>Contact</h2><p>Spot a wrong price or status? <a href="mailto:{REPORT_EMAIL}">Email us</a>.</p>""")
+    page("privacy/index.html", "Privacy – PlugPrice", f"""<h1>Privacy</h1>
+<p>Short version: PlugPrice collects as little as possible.</p>
+<ul><li><b>No accounts.</b> There are no logins or user profiles here.</li>
+<li><b>Newsletter.</b> If you sign up for the weekly email, your email address is collected and stored by <a href="https://plugprice.beehiiv.com">beehiiv</a>, which sends the newsletter. Its privacy policy applies, and you can unsubscribe from any email.</li>
+<li><b>Hosting.</b> The site is hosted on GitHub Pages. GitHub may log technical data such as IP addresses for security and operations; see GitHub's privacy statement.</li>
+<li><b>No ad trackers.</b> We currently run no ads, ad trackers, or third-party analytics. If that changes, this page will be updated first.</li></ul>
+<h2>Contact</h2><p>Questions or requests: <a href="mailto:{REPORT_EMAIL}">{REPORT_EMAIL}</a></p>""")
+    page("disclosure/index.html", "Affiliate disclosure – PlugPrice", f"""<h1>Affiliate disclosure</h1>
+<p>PlugPrice may earn a commission when you buy through some links, such as links to home EV chargers. This costs you nothing extra.</p>
+<p>Station data, prices, and reliability rankings are never paid for. No network or seller can buy a better position.</p>
+<p>Questions: <a href="mailto:{REPORT_EMAIL}">{REPORT_EMAIL}</a></p>""")
     # sitemap(s) + robots
     urls = [BASE_URL + "/" + (p[:-10] if p.endswith("index.html") else p) for p in PAGES]
     chunks = [urls[i:i+45000] for i in range(0, len(urls), 45000)]
