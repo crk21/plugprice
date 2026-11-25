@@ -1,0 +1,671 @@
+{
+"date": "2026-11-25",
+"previous": "2026-11-24",
+"events": [
+{
+"id": 76731,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 158892,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 165552,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 165635,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 168097,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 170137,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 170388,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 174646,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 175743,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 175802,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 176216,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 180216,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 185369,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 185576,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 190090,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 200416,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 223867,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 225177,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 228160,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 230749,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 230912,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 251848,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 251946,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 257166,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 261497,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 261514,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 262726,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 296076,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 298704,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 307448,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 308779,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 310201,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 310492,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 311760,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 312291,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 312333,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 328021,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 330182,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 331472,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 333949,
+"type": "status_change",
+"from": "P",
+"to": "E"
+},
+{
+"id": 335533,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 346601,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 347351,
+"type": "status_change",
+"from": "P",
+"to": "E"
+},
+{
+"id": 347377,
+"type": "status_change",
+"from": "P",
+"to": "E"
+},
+{
+"id": 347382,
+"type": "status_change",
+"from": "P",
+"to": "E"
+},
+{
+"id": 347949,
+"type": "status_change",
+"from": "P",
+"to": "E"
+},
+{
+"id": 348138,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 348208,
+"type": "status_change",
+"from": "P",
+"to": "E"
+},
+{
+"id": 348993,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 349064,
+"type": "status_change",
+"from": "P",
+"to": "E"
+},
+{
+"id": 349213,
+"type": "status_change",
+"from": "P",
+"to": "E"
+},
+{
+"id": 350329,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 350342,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 351467,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 351972,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 352119,
+"type": "went_down",
+"from": "P",
+"to": "T"
+},
+{
+"id": 352120,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 352165,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 352606,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 355177,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 355510,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 355580,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 367811,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 367817,
+"type": "status_change",
+"from": "P",
+"to": "E"
+},
+{
+"id": 371463,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 371581,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 371934,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 374779,
+"type": "status_change",
+"from": "P",
+"to": "E"
+},
+{
+"id": 376442,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 376468,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 384740,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 386854,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 386894,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 387806,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 389668,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 390486,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 395289,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 395569,
+"type": "status_change",
+"from": "E",
+"to": "P"
+},
+{
+"id": 397569,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 397677,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 398202,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 398432,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 400500,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 404683,
+"type": "added",
+"status": "E"
+},
+{
+"id": 416540,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 416979,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 417823,
+"type": "status_change",
+"from": "P",
+"to": "E"
+},
+{
+"id": 421385,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 422263,
+"type": "added",
+"status": "T"
+},
+{
+"id": 429599,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 446462,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 447294,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 452289,
+"type": "status_change",
+"from": "P",
+"to": "E"
+},
+{
+"id": 452498,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 453499,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 455872,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 457917,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 460552,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 461383,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 463782,
+"type": "added",
+"status": "E"
+},
+{
+"id": 466662,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 467639,
+"type": "came_back",
+"from": "T",
+"to": "E"
+},
+{
+"id": 472240,
+"type": "went_down",
+"from": "E",
+"to": "T"
+},
+{
+"id": 474052,
+"type": "added",
+"status": "E"
+},
+{
+"id": 474053,
+"type": "added",
+"status": "E"
+},
+{
+"id": 474055,
+"type": "added",
+"status": "E"
+},
+{
+"id": 474056,
+"type": "added",
+"status": "E"
+},
+{
+"id": 474061,
+"type": "added",
+"status": "E"
+},
+{
+"id": 474062,
+"type": "added",
+"status": "E"
+},
+{
+"id": 474076,
+"type": "added",
+"status": "P"
+},
+{
+"id": 474078,
+"type": "added",
+"status": "E"
+},
+{
+"id": 350669,
+"type": "removed",
+"from": "P"
+},
+{
+"id": 388970,
+"type": "removed",
+"from": "E"
+}
+]
+}
